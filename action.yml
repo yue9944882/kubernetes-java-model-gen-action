@@ -2,8 +2,8 @@
 name: 'Kubernetes Java CRD Model Generator'
 description: 'Generating Kubenretes Java model from CRD'
 inputs:
-  crdYamlSources:
-    description: 'A valid url or the local file path to the CRD yaml.'
+  crdYaml:
+    description: 'The path to the CRD yaml.'
     required: true
   javaPackageName:
     description: 'The package name of the generated java model.'
@@ -13,7 +13,7 @@ inputs:
     required: true
   outputDir: 
     description: 'The target output path for the generated java sources.'
-    required: true
+    required: false
     default: output_dir
   generatedClientVersion:
     description: 'The target output path for the generated java sources.'
