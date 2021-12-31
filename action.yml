@@ -30,7 +30,7 @@ runs:
   env:
     CLIENT_VERSION: "${{ inputs.generatedClientVersion }}"
     PACKAGE_NAME: "${{ inputs.javaPackageName }}"
-    KUBERNETES_CRD_GROUP_PREFIX="${{ inputs.crdApiGroupName }}"
+    KUBERNETES_CRD_GROUP_PREFIX: "${{ inputs.crdApiGroupName }}"
     CLEANUP_DIRS: ""
     KUBERNETES_BRANCH: "release-1.20"
     CLIENT_LANGUAGE: "java"
