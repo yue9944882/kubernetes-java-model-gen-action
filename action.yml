@@ -1,0 +1,52 @@
+# action.yml
+name: 'Kubernetes Java CRD Model Generator'
+description: 'Generating Kubenretes Java model from CRD'
+inputs:
+  crdYamlSources:
+    description: 'A valid url or the local file path to the CRD yaml.'
+    required: true
+  javaPackageName:
+    description: 'The package name of the generated java model.'
+    required: true
+  crdApiGroupName:
+    description: 'The CRD's api group.'
+    required: true
+  outputDir: 
+    description: 'The target output path for the generated java sources.'
+    required: true
+    default: output_dir
+  generatedClientVersion:
+    description: 'The target output path for the generated java sources.'
+    required: false
+    default: 1.0.0
+outputs:
+  generatedModelFileCount: 
+    description: 'The number of the generated java sources from CRD'
+runs:
+  using: 'docker'
+  image: 'Dockerfile.action'
+  #pre-entrypoint: 
+  #post-entrypoint: 
+  env:
+    CLIENT_VERSION: "${{ inputs.generatedClientVersion }}"
+    PACKAGE_NAME: "${{ inputs.javaPackageName }}"
+    KUBERNETES_CRD_GROUP_PREFIX="${{ inputs.crdApiGroupName }}"
+    CLEANUP_DIRS: ""
+    KUBERNETES_BRANCH: "release-1.20"
+    CLIENT_LANGUAGE: "java"
+    OPENAPI_GENERATOR_USER_ORG: "OpenAPITools"
+    OPENAPI_GENERATOR_COMMIT: "v5.1.0"
+    OPENAPI_MODEL_LENGTH: ""
+    OPENAPI_SKIP_FETCH_SPEC: "true"
+    KUBERNETES_CRD_MODE: "true"
+    GENERATE_APIS: "false"
+    OPENAPI_SKIP_BASE_INTERFACE: ""
+    HIDE_GENERATION_TIMESTAMP: ""
+    LIBRARY: "okhttp-gson"
+    USERNAME: "kubernetes"
+    REPOSITORY: "kubernetes"
+  args:
+  - ${{ inputs.outputDir }}
+  branding:
+    icon: 'gift'  
+    color: 'green'
