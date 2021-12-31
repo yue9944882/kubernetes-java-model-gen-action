@@ -9,7 +9,7 @@ inputs:
     description: 'The package name of the generated java model.'
     required: true
   crdApiGroupName:
-    description: 'The CRD's api group.'
+    description: 'The CRD api group.'
     required: true
   outputDir: 
     description: 'The target output path for the generated java sources.'
