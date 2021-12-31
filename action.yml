@@ -22,6 +22,9 @@ inputs:
 outputs:
   generatedModelFileCount: 
     description: 'The number of the generated java sources from CRD'
+branding:
+  icon: 'gift'  
+  color: 'green'
 runs:
   using: 'docker'
   image: 'Dockerfile.action'
@@ -47,6 +50,3 @@ runs:
     REPOSITORY: "kubernetes"
   args:
   - ${{ inputs.outputDir }}
-  branding:
-    icon: 'gift'  
-    color: 'green'
